@@ -1,0 +1,51 @@
+@font-face {
+    font-family: "fredoka_oneregular";
+    src: url("/fonts/fredoka/fredoka.otf");
+}
+
+@font-face {
+    font-family: "futura";
+    src: url("/fonts/futura/futura-medium.ttf");
+}
+
+@font-face {
+    font-family: "good_unicorn";
+    src: url("/fonts/unicorn/unicorn.ttf");
+}
+
+html body { 
+    background-color: #FAF9F0;
+    padding: 0;
+    margin: 0;
+    font-family: "futura", Arial, Helvetica, sans-serif;
+    margin-bottom: 25rem;
+}
+
+#mast { 
+    background-color: #F2DFD7;
+    padding-left: 3.5rem;
+}
+
+#logo {
+    color: #A68BA5;
+    font-family: "good_unicorn", "fredoka_oneregular", "futura", Arial, Helvetica, sans-serif;
+    font-size: 7rem;
+    text-shadow: -3.5px 3.5px #5C5D67;
+    margin-right: 0;
+}
+
+#mnemonic-box:disabled { 
+    background-color: lightgreen;
+}
+
+#morse-box { 
+    outline: black 1pt solid;
+    height: 25rem;
+    width: 25rem;
+}
+
+#test, #other-test{ 
+    outline: black 1pt solid;
+    height: 5rem;
+    width: 25rem;
+}

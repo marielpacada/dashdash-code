@@ -42,8 +42,8 @@ function makeTree(dict, array) {
 
         // generate left morse and add to mainDict
         left.setMorse(currMorse);
-        left.addMorse('0'); // 0 for dot
-        dict[array[0].slice()] = left.morse.slice();
+        left.addMorse(0); // 0 for dot
+        dict[array[0]] = left.morse;
 
         queue.push(left);
         array.shift();
@@ -56,8 +56,8 @@ function makeTree(dict, array) {
 
         // generate right morse and add to mainDict
         right.setMorse(currMorse);
-        right.addMorse('1'); // 1 for dash
-        dict[array[0].slice()] = right.morse.slice();
+        right.addMorse(1); // 1 for dash
+        dict[array[0]] = right.morse;
 
         queue.push(right);
         array.shift();
@@ -101,19 +101,83 @@ var mnemonicDict = {
     'Z': 'ZIGZAG zigzag'
 };
 
+/* -------------------- we finished all the global constant variables woo!*/
 
 
+/* -------------------- these are for manipulating the actual document!*/
 
-/* -------------------- we finished all the global variables woo!*/
+class Letter {
+    constructor(letter) {
+        this.letter = letter;
+    }
 
-
-// function to generate a random letter
-function generateLetter() { 
-
-
-
-    
+    getMnemonic() {
+        return mnemonicDict[this.letter];
+    }
+    getMorse() {
+        return morseDict[this.letter]; // remember, this returns an array like [1] or [0,1,1,0]
+    }
 }
 
+// function to generate a random letter, onload of step1 and onclick of next button (when user gets it right)
+var letter;
+var correctMorse;
+var inputMorse;
+
+function generateLetter() {
+    inputMorse = [];
+    var testBox = document.getElementById("test");
+    testBox.innerHTML = inputMorse;
+
+    var temp = String.fromCharCode(65 + Math.floor(Math.random() * 26));
+    letter = new Letter(temp);
+    correctMorse = letter.getMorse();
+    document.getElementById("letter").innerHTML = letter.letter;
 
 
+    var testBox = document.getElementById("other-test");
+    testBox.innerHTML = correctMorse;
+}
+
+function checkMnemonic() {
+    var correctMnem = letter.getMnemonic();
+    var inputMnem = document.getElementById("mnemonic-box").value;
+    if (correctMnem == inputMnem) {
+        document.getElementById("mnemonic-box").disabled = true;
+    }
+}
+
+function addDot() {
+    inputMorse.push(0);
+    var dot = new Image();
+    dot.src = "images/dot.svg";
+    const morseBox = document.getElementById("morse-box");
+    morseBox.appendChild(dot);
+    checkMorse();
+}
+
+function addDash() {
+    inputMorse.push(1);
+    var dash = new Image();
+    dash.src = "images/dash.svg";
+    const morseBox = document.getElementById("morse-box");
+    morseBox.appendChild(dash);
+    checkMorse();
+}
+
+function backspace() {
+    const morseBox = document.getElementById("morse-box");
+    morseBox.removeChild(morseBox.lastElementChild);
+    inputMorse.pop();
+}
+
+function checkMorse() {
+    var testBox = document.getElementById("test");
+    testBox.innerHTML = inputMorse;
+
+    // why is this not working????
+    if (inputMorse == correctMorse) {
+        document.write('hefsfda');
+        document.getElementById("morse-box").style.backgroundColor = "lightgreen";
+    }
+}
