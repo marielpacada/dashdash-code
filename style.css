@@ -13,7 +13,7 @@
     src: url("/fonts/unicorn/unicorn.ttf");
 }
 
-html body { 
+html body {
     background-color: #FAF9F0;
     padding: 0;
     margin: 0;
@@ -21,7 +21,7 @@ html body {
     margin-bottom: 25rem;
 }
 
-#mast { 
+#mast {
     background-color: #F2DFD7;
     padding-left: 3.5rem;
 }
@@ -34,17 +34,71 @@ html body {
     margin-right: 0;
 }
 
-#mnemonic-box:disabled { 
+#page-body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#title-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    margin-bottom: 6rem;
+    width: 20rem;
+    height: 7rem;
+    background-color: #957593;
+    border-radius: 25px;
+    box-shadow: -5px 5px #2F0147;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+}
+
+#title-text { 
+    color: #FEF9FF;
+    font-size: 3rem;
+}
+
+.step-section { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 7rem;
+    background-color: #EBD5D8;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+#mnemonic-box:disabled {
     background-color: lightgreen;
 }
 
-#morse-box { 
+#morse-box {
     outline: black 1pt solid;
     height: 25rem;
     width: 25rem;
 }
 
-#test, #other-test{ 
+#test, #other-test {
     outline: black 1pt solid;
     height: 5rem;
     width: 25rem;

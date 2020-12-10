@@ -122,18 +122,16 @@ class Letter {
 // function to generate a random letter, onload of step1 and onclick of next button (when user gets it right)
 var letter;
 var correctMorse;
-var inputMorse;
+const inputMorse = [];
 
 function generateLetter() {
-    inputMorse = [];
     var testBox = document.getElementById("test");
     testBox.innerHTML = inputMorse;
 
     var temp = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     letter = new Letter(temp);
-    correctMorse = letter.getMorse();
+    correctMorse = letter.getMorse().slice();
     document.getElementById("letter").innerHTML = letter.letter;
-
 
     var testBox = document.getElementById("other-test");
     testBox.innerHTML = correctMorse;
@@ -175,9 +173,7 @@ function checkMorse() {
     var testBox = document.getElementById("test");
     testBox.innerHTML = inputMorse;
 
-    // why is this not working????
-    if (inputMorse == correctMorse) {
-        document.write('hefsfda');
+    if (JSON.stringify(inputMorse) == JSON.stringify(correctMorse)) {
         document.getElementById("morse-box").style.backgroundColor = "lightgreen";
     }
 }
