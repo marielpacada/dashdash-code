@@ -5,7 +5,6 @@ class Node {
         this.left = null;
         this.right = null;
     }
-
     setMorse(morse) {
         var copy = morse.slice();
         this.morse = copy;
@@ -19,7 +18,6 @@ class Node {
     setRight(right) {
         this.right = right;
     }
-
 }
 class Tree {
     constructor(letter) {
@@ -74,26 +72,48 @@ var morseDict = {};
 var letters = ['null1', 'E', 'T', 'I', 'A', 'N', 'M', 'S', 'U', 'R', 'W', 'D', 'K', 'G', 'O', 'H', 'V', 'F', 'null2', 'L', 'null3', 'P', 'J', 'B', 'X', 'C', 'Y', 'Z', 'Q'];
 makeTree(morseDict, letters);
 
-function addMnemonic(text, dict) { 
-    var lines = text.split('\n');
+var mnemonicDict = {
+    'A': 'aCHOO',
+    'B': 'BE a good boy',
+    'C': 'COca COla',
+    'D': 'DRACula',
+    'E': 'eh',
+    'F': 'fettuCCIne',
+    'G': 'GOD BLESS you',
+    'H': 'hippityhop',
+    'I': 'i am',
+    'J': 'just WAIT IT OUT',
+    'K': 'KANgaROO',
+    'L': 'los ANgeles',
+    'M': 'MORE MILK',
+    'N': 'NAvy',
+    'O': 'OREO',
+    'P': 'poTATO pie',
+    'Q': "QUEEN'S WEDding DAY",
+    'R': 'reFLECtion',
+    'S': 'sun is up',
+    'T': 'TALL',
+    'U': 'underNEATH',
+    'V': 'victory WALK',
+    'W': "where's WALDO",
+    'X': 'X marks the SPOT',
+    'Y': 'YELlow YOYO',
+    'Z': 'ZIGZAG zigzag'
+};
 
-    for (var line of lines) { 
-        var pair = line.split(' - ');
-        dict[pair[0].slice()] = pair[1].slice();
-document.write("hello");
 
-    }
 
+
+/* -------------------- we finished all the global variables woo!*/
+
+
+// function to generate a random letter
+function generateLetter() { 
+
+
+
+    
 }
-
-
-var mnemonicDict = {};
-var xhttp = new XMLHttpRequest();
-xhttp.onload = addMnemonic(xhttp.responseText, mnemonicDict);
-document.write(mnemonicDict);
-
-xhttp.open('GET', 'mnemonics.txt', true);
-xhttp.send();
 
 
 
