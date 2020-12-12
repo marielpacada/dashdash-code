@@ -67,6 +67,7 @@ function makeTree(dict, array) {
     }
 }
 
+
 // letters are in order of morse code binary tree
 var morseDict = {};
 var letters = ['null1', 'E', 'T', 'I', 'A', 'N', 'M', 'S', 'U', 'R', 'W', 'D', 'K', 'G', 'O', 'H', 'V', 'F', 'null2', 'L', 'null3', 'P', 'J', 'B', 'X', 'C', 'Y', 'Z', 'Q'];
@@ -101,6 +102,12 @@ var mnemonicDict = {
     'Z': 'ZIGZAG zigzag'
 };
 
+var hintDict = {};
+for (var key of Object.keys(morseDict)) {
+    hintDict[key.slice()] = morseDict[key.slice()].length;
+}
+
+
 /* -------------------- we finished all the global constant variables woo!*/
 
 
@@ -117,64 +124,166 @@ class Letter {
     getMorse() {
         return morseDict[this.letter]; // remember, this returns an array like [1] or [0,1,1,0]
     }
+    getHint() {
+        return hintDict[this.letter];
+    }
 }
 
 // function to generate a random letter, onload of step1 and onclick of next button (when user gets it right)
 var letter;
 var correctMorse;
-const inputMorse = [];
+var inputMorse = [];
+var isMnemCorrect = false;
+var isMorseCorrect = false;
+var isFirstTurn = true;
 
+var morseCount;
 function generateLetter() {
-    var testBox = document.getElementById("test");
-    testBox.innerHTML = inputMorse;
 
+    if (isRevealed) { 
+        document.getElementById("hint-cover").innerHTML = letter.getHint();
+    }
+
+    morseCount = 0;
+    isMnemCorrect = false;
+    isMorseCorrect = false;
     var temp = String.fromCharCode(65 + Math.floor(Math.random() * 26));
     letter = new Letter(temp);
     correctMorse = letter.getMorse().slice();
-    document.getElementById("letter").innerHTML = letter.letter;
+    document.getElementById("random-letter-box").innerHTML = letter.letter;
 
-    var testBox = document.getElementById("other-test");
-    testBox.innerHTML = correctMorse;
+    if (isRevealed) { 
+        document.getElementById("hint-cover").innerHTML = letter.getHint();
+    }
+    // clearing mnem box
+    var mnemBox = document.getElementById("mnem-box");
+    mnemBox.disabled = false;
+    mnemBox.style.background = "white";
+    mnemBox.value = "";
+
+    // clearing morse box
+    var morseBox = document.getElementById("morse-box");
+    morseBox.style.backgroundColor = "white";
+    morseBox.style.borderColor = "#7F7B82";
+    morseBox.innerHTML = "";
+
+    if (!isFirstTurn) { reinstateDefaultButtons(); }
+    if (isFirstTurn) { isFirstTurn = false; }
+}
+
+function reinstateDefaultButtons() {
+    inputMorse = [];
+    enableButton(document.getElementById("skip-button"), "generateLetter()");
+    enableButton(document.getElementById("hint-button"), "revealHint()");
+    enableButton(document.getElementById("dot"), "addDot()");
+    enableButton(document.getElementById("dash"), "addDash()");
+    enableButton(document.getElementById("back"), "backspace()");
+
+    var next = document.getElementById("next-button");
+    next.style.filter = "opacity(40%)";
+    next.style.cursor = "default";
+    next.onclick = null;
 }
 
 function checkMnemonic() {
     var correctMnem = letter.getMnemonic();
-    var inputMnem = document.getElementById("mnemonic-box").value;
+    var box = document.getElementById("mnem-box");
+    var inputMnem = box.value;
     if (correctMnem == inputMnem) {
-        document.getElementById("mnemonic-box").disabled = true;
+        isMnemCorrect = true;
+        box.disabled = true;
+        box.style.backgroundColor = "#DFF2D8";
     }
+    checkBothCorrect();
+}
+
+function showAlert() {
+    alert("there can only be four dots or dashes, silly!");
+    morseCount--;
 }
 
 function addDot() {
+    morseCount++;
+    if (morseCount > 4) {
+        showAlert();
+        return;
+    }
     inputMorse.push(0);
     var dot = new Image();
     dot.src = "images/dot.svg";
+    dot.style.height = "10px"
+    dot.style.marginLeft = "5px";
+    dot.style.marginRight = "5px";
+
     const morseBox = document.getElementById("morse-box");
     morseBox.appendChild(dot);
     checkMorse();
 }
 
 function addDash() {
+    morseCount++;
+    if (morseCount > 4) {
+        showAlert();
+        return;
+    }
     inputMorse.push(1);
     var dash = new Image();
     dash.src = "images/dash.svg";
+    dash.style.height = "10px"
+    dash.style.marginLeft = "5px";
+    dash.style.marginRight = "5px";
     const morseBox = document.getElementById("morse-box");
     morseBox.appendChild(dash);
     checkMorse();
 }
 
 function backspace() {
+    if (morseCount == 0) {
+        return;
+    }
+    morseCount--;
     const morseBox = document.getElementById("morse-box");
     morseBox.removeChild(morseBox.lastElementChild);
     inputMorse.pop();
 }
 
-function checkMorse() {
-    var testBox = document.getElementById("test");
-    testBox.innerHTML = inputMorse;
+function disableButton(button) {
+    button.onclick = null;
+    button.style.cursor = "default";
+    button.style.filter = "opacity(40%)";
+}
 
+function enableButton(button, func) {
+    button.setAttribute("onclick", func);
+    button.style.cursor = "pointer";
+    button.style.filter = "opacity(100%)";
+}
+
+function checkMorse() {
     if (JSON.stringify(inputMorse) == JSON.stringify(correctMorse)) {
-        document.getElementById("morse-box").style.backgroundColor = "lightgreen";
+        var box = document.getElementById("morse-box");
+        box.style.backgroundColor = "#DFF2D8";
+        box.style.borderColor = "#A9BA90";
+        isMorseCorrect = true;
+    }
+    checkBothCorrect();
+}
+
+function checkBothCorrect() {
+    if (isMorseCorrect) { 
+        disableButton(document.getElementById("dot"));
+        disableButton(document.getElementById("dash"));
+        disableButton(document.getElementById("back"));
+    }
+
+    if (isMnemCorrect && isMorseCorrect) {
+        disableButton(document.getElementById("dot"));
+        disableButton(document.getElementById("dash"));
+        disableButton(document.getElementById("back"));
+        disableButton(document.getElementById("hint-button"));
+        disableButton(document.getElementById("skip-button"));
+
+        enableButton(document.getElementById("next-button"), "generateLetter()");
     }
 }
 
@@ -184,9 +293,22 @@ function revealHint() {
         isRevealed = true;
         document.getElementById("hint-cover").style.backgroundColor = "transparent";
         document.getElementById("hint-button").src = "images/unlocked.svg";
+        document.getElementById("hint-cover").innerHTML = letter.getHint();
+
     } else {
         isRevealed = false;
         document.getElementById("hint-cover").style.backgroundColor = "#D7ACB2";
         document.getElementById("hint-button").src = "images/locked.svg";
+        document.getElementById("hint-cover").innerHTML = "";
+
     }
 }
+
+function checkKeyPress(e) { 
+    if (e.code == 'KeyM') { 
+        document.write("hello");
+        revealHint();
+    }
+}
+
+document.addEventListener("keydown", checkKeyPress(), true); 

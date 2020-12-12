@@ -13,7 +13,7 @@
 
 
 
-<body>
+<body onload="generateLetter()">
 	<nav class="navbar navbar-expand-lg" id="mast">
 		<div class="navbar-brand nav-item" id="logo">learn with mariel</div>
 	</nav>
@@ -31,19 +31,18 @@
 
 			<div class="step-content">
 				<div class="content-subgroup">
-					<div id="random-letter-box" style="cursor:default;">
-						H
-					</div>
+					<div id="random-letter-box" style="cursor:default;"></div>
 					<div id="letter-buttons">
-						<img class="icon-button" src="images/skip.svg" height="40px" width="auto">
-						<img class="icon-button" src="images/next.svg" height="40px" width="auto">
+						<img id="skip-button" onclick="generateLetter()" class="icon-button" src="images/skip.svg" height="40px"
+							width="auto">
+						<img id="next-button" class="icon-button" src="images/next.svg" height="40px" width="auto">
 					</div>
 				</div>
 
 				<div class="content-subgroup">
 					<div class="input-subgroup">
 						<p class="content-text">mnemonic</p>
-						<input type="text" class="input-box">
+						<input oninput="checkMnemonic()" id="mnem-box" type="text" class="input-box" autocomplete="off">
 					</div>
 
 					<div class="interactable-subgroup">
@@ -61,9 +60,9 @@
 					</div>
 
 					<div class="interactable-subgroup">
-						<img class="icon-button" src="images/dot-button.svg" height="32px" width="auto">
-						<img class="icon-button" src="images/dash-button.svg" height="32px" width="auto">
-						<img class="icon-button" src="images/backspace.svg" height="32px" width="auto">
+						<img onclick="addDot()" id="dot" class="icon-button morse-button" src="images/dot-button.svg" height="32px" width="auto">
+						<img onclick="addDash()" id="dash" class="icon-button morse-button" src="images/dash-button.svg" height="32px" width="auto">
+						<img onclick="backspace()" id="back" class="icon-button morse-button" src="images/backspace.svg" height="32px" width="auto">
 					</div>
 				</div>
 			</div>
@@ -74,28 +73,9 @@
 
 
 
-
 	</div>
 
 
-
-
-
-
-
-
-
-
-
-	<!-- <button id="button" onclick="generateLetter()">hello</button>
-    <p id="letter">wassah</p>
-    <input type="text" id="mnemonic-box" oninput="checkMnemonic()">
-    <div id="morse-box" ></div>
-    <button id="button" onclick="addDot()">dot</button>
-    <button id="button" onclick="addDash()">dash</button>
-    <button id="button" onclick="backspace()">delete</button>
-    <div id="test"></div>
-    <div id="other-test"></div> -->
 
 
 
