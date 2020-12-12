@@ -25,10 +25,48 @@
 		</div>
 
 		<div class="step-section" id="step1">
+			<div class="step-title-box">
+				step 1: memory practice
+			</div>
 
+			<div class="step-content">
+				<div class="content-subgroup">
+					<div id="random-letter-box" style="cursor:default;">
+						H
+					</div>
+					<div id="letter-buttons">
+						<img class="icon-button" src="images/skip.svg" height="40px" width="auto">
+						<img class="icon-button" src="images/next.svg" height="40px" width="auto">
+					</div>
+				</div>
 
+				<div class="content-subgroup">
+					<div class="input-subgroup">
+						<p class="content-text">mnemonic</p>
+						<input type="text" class="input-box">
+					</div>
 
-			
+					<div class="interactable-subgroup">
+						<p class="content-text">hint: </p>
+						<div id="hint-cover"></div>
+						<img id="hint-button" onclick="revealHint()" src="images/locked.svg" style="cursor:pointer"
+							height="30px" width="auto">
+					</div>
+				</div>
+
+				<div class="content-subgroup">
+					<div class="input-subgroup">
+						<p class="content-text" style="margin-bottom: -.4rem;">morse code</p>
+						<div id="morse-box"></div>
+					</div>
+
+					<div class="interactable-subgroup">
+						<img class="icon-button" src="images/dot-button.svg" height="32px" width="auto">
+						<img class="icon-button" src="images/dash-button.svg" height="32px" width="auto">
+						<img class="icon-button" src="images/backspace.svg" height="32px" width="auto">
+					</div>
+				</div>
+			</div>
 		</div>
 
 

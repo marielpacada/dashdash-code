@@ -177,3 +177,16 @@ function checkMorse() {
         document.getElementById("morse-box").style.backgroundColor = "lightgreen";
     }
 }
+
+var isRevealed = false;
+function revealHint() {
+    if (!isRevealed) {
+        isRevealed = true;
+        document.getElementById("hint-cover").style.backgroundColor = "transparent";
+        document.getElementById("hint-button").src = "images/unlocked.svg";
+    } else {
+        isRevealed = false;
+        document.getElementById("hint-cover").style.backgroundColor = "#D7ACB2";
+        document.getElementById("hint-button").src = "images/locked.svg";
+    }
+}
