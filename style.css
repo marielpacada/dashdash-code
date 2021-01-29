@@ -18,12 +18,12 @@ html body {
     padding: 0;
     margin: 0;
     font-family: "futura", Arial, Helvetica, sans-serif;
-    margin-bottom: 25rem;
+    margin-bottom: 15rem;
 }
 
 input {
     height: 2rem;
-    width: 10rem;
+    width: 15rem;
     border-radius: 10px;
 }
 
@@ -53,7 +53,7 @@ input {
     justify-content: center;
     align-items: center;
     margin-top: 3rem;
-    margin-bottom: 6rem;
+    margin-bottom: 3rem;
     width: 25rem;
     height: 7rem;
     background-color: #957593;
@@ -100,7 +100,7 @@ input {
 .interactable-subgroup {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     padding-top: 2rem;
@@ -137,6 +137,7 @@ input {
     height: 22rem;
     background-color: #EBD5D8;
     border-radius: 50px;
+    margin-top: 5rem;
 }
 
 .step-title-box {
@@ -194,3 +195,45 @@ input {
     justify-content: center;
     align-items: center;
 }
+
+.app-desc { 
+    width: 70%;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+}
+
+#back-link { 
+    text-align: center;
+}
+
+#alphabet-div { 
+    display: flex; 
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.half-alphabet { 
+    display: flex; 
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 3rem 8rem 3rem 8rem;
+}
+
+.one-letter-div { 
+    display: flex; 
+    flex-direction: row;
+    justify-content: space-between;
+    width: 18rem;
+}
+
+.letter { 
+    font-size: x-large;
+}
+
+#mnem-lock { 
+    height: 10rem;
+    margin-top: 3rem;
+}
+

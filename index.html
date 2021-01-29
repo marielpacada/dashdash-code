@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="utf-8">
-	<title>learn with mariel</title>
+	<title>DashDash Code</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="bootstrap.css">
 	<link rel="icon" href="images/favicon.png">
@@ -19,6 +19,13 @@
 			<div class="display-4" id="title-text">DashDash Code</div>
 		</div>
 
+		<div class="app-desc">
+			DashDash Code will help you flex your Morse code memory by providing syllabic mnemonics that are associated
+			with each letter of the alphabet. Before you start, check out the default mnemonics or create new ones on <a
+				href="mnemonics.html" id="link">this page</a>! Happy dashing and dotting!
+		</div>
+
+
 		<div class="step-section" id="step1">
 			<div class="step-title-box">
 				answer both the mnemonic and the code correctly (or skip) to move on!
@@ -28,8 +35,8 @@
 				<div class="content-subgroup">
 					<div id="random-letter-box" style="cursor:default;"></div>
 					<div id="letter-buttons">
-						<img id="skip-button" onclick="generateLetter()" class="icon-button" src="images/skip.svg" height="40px"
-							width="auto">
+						<img id="skip-button" onclick="generateLetter()" class="icon-button" src="images/skip.svg"
+							height="40px" width="auto">
 						<img id="next-button" class="icon-button" src="images/next.svg" height="40px" width="auto">
 					</div>
 				</div>
@@ -55,9 +62,12 @@
 					</div>
 
 					<div class="interactable-subgroup">
-						<img onclick="addDot()" id="dot" class="icon-button morse-button" src="images/dot-button.svg" height="32px" width="auto">
-						<img onclick="addDash()" id="dash" class="icon-button morse-button" src="images/dash-button.svg" height="32px" width="auto">
-						<img onclick="backspace()" id="back" class="icon-button morse-button" src="images/backspace.svg" height="32px" width="auto">
+						<img onclick="addDot()" id="dot" class="icon-button morse-button" src="images/dot-button.svg"
+							height="32px" width="auto">
+						<img onclick="addDash()" id="dash" class="icon-button morse-button" src="images/dash-button.svg"
+							height="32px" width="auto">
+						<img onclick="backspace()" id="back" class="icon-button morse-button" src="images/backspace.svg"
+							height="32px" width="auto">
 					</div>
 				</div>
 			</div>
