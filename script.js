@@ -140,7 +140,7 @@ var isFirstTurn = true;
 var morseCount;
 function generateLetter() {
 
-    if (isRevealed) { 
+    if (isRevealed) {
         document.getElementById("hint-cover").innerHTML = letter.getHint();
     }
 
@@ -152,7 +152,7 @@ function generateLetter() {
     correctMorse = letter.getMorse().slice();
     document.getElementById("random-letter-box").innerHTML = letter.letter;
 
-    if (isRevealed) { 
+    if (isRevealed) {
         document.getElementById("hint-cover").innerHTML = letter.getHint();
     }
     // clearing mnem box
@@ -270,7 +270,7 @@ function checkMorse() {
 }
 
 function checkBothCorrect() {
-    if (isMorseCorrect) { 
+    if (isMorseCorrect) {
         disableButton(document.getElementById("dot"));
         disableButton(document.getElementById("dash"));
         disableButton(document.getElementById("back"));
@@ -303,12 +303,3 @@ function revealHint() {
 
     }
 }
-
-function checkKeyPress(e) { 
-    if (e.code == 'KeyM') { 
-        document.write("hello");
-        revealHint();
-    }
-}
-
-document.addEventListener("keydown", checkKeyPress(), true); 

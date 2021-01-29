@@ -54,7 +54,7 @@ input {
     align-items: center;
     margin-top: 3rem;
     margin-bottom: 6rem;
-    width: 20rem;
+    width: 25rem;
     height: 7rem;
     background-color: #957593;
     border-radius: 25px;
@@ -144,7 +144,7 @@ input {
     justify-content: center;
     align-items: center;
     align-self: flex-start;
-    width: 17rem;
+    width: 100%;
     height: 3rem;
     background-color: #D7ACB2;
     border-radius: 50px;
